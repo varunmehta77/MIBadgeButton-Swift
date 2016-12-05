@@ -34,6 +34,12 @@ open class MIBadgeButton: UIButton {
             badgeLabel.textColor = badgeTextColor
         }
     }
+    
+    open var badgeTextFont = UIFont.systemFont(ofSize: 10) {
+        didSet {
+            badgeLabel.font = badgeTextFont
+        }
+    }
 
     override public init(frame: CGRect) {
         badgeLabel = UILabel()
@@ -59,13 +65,13 @@ open class MIBadgeButton: UIButton {
     fileprivate func setupBadgeViewWithString(badgeText: String?) {
         badgeLabel.clipsToBounds = true
         badgeLabel.text = badgeText
-        badgeLabel.font = UIFont.systemFont(ofSize: 12)
+        badgeLabel.font = badgeTextFont
         badgeLabel.textAlignment = .center
         badgeLabel.sizeToFit()
         let badgeSize = badgeLabel.frame.size
         
-        let height = max(20, Double(badgeSize.height) + 5.0)
-        let width = max(height, Double(badgeSize.width) + 10.0)
+        let height = max(18, Double(badgeSize.height) + 3.0)
+        let width = max(height, Double(badgeSize.width) + 6.0)
         
         var vertical: Double?, horizontal: Double?
         if let badgeInset = self.badgeEdgeInsets {
